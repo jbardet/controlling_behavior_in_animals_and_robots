@@ -1,0 +1,257 @@
+\pdfoptionpdfminorversion=7
+\documentclass[
+	10pt, % font size (default is 10pt)
+	english, % language
+	twoside % documents can be either one sided (eg articles) or two sided (eg books), affects margins and stuff
+]{article}
+
+\input{def/parameters}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PLATFORM DEPENDANT CONDITIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{ifplatform}
+% allows to detect which os is running the compilation
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% INTERNATIONALIZATION
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{babel}
+% allows the internationalization of the document, language specified in the document class
+% should be placed soon after the \documentclass command, so that all the other packages loaded afterwards know the used language
+
+\usepackage[T1]{fontenc} 
+% defines the font encoding
+% is used when in need of non-english caracters 
+% (if the document is only english, then no need for it, the default font encoding is good)
+% allows for automatic hyphenation of accentuated words
+% allows for successful search of accentuated words in pdf
+% allows for successful copy pasting of accentuated words from pdf
+
+\usepackage[utf8]{inputenc}
+% defines the character encoding
+
+
+%%%%%%%%%%%%%%
+%% MATHEMATICS
+%%%%%%%%%%%%%%
+
+\usepackage{mathtools}
+% simplifies the usage of complicated mathematical formulae
+% loads the amsmath package, fixes some of its quirks and adds some useful settings, symbols, and environments to it
+
+\setcounter{MaxMatrixCols}{20}
+
+\usepackage{siunitx}
+
+\usepackage{empheq}
+
+
+%%%%%%%
+%% TEXT
+%%%%%%%
+
+\usepackage{textcomp}
+% provides extra symbols, e.g. arrows like \textrightarrow, various currencies (\texteuro,...), things like \textcelsius and many others
+
+\usepackage{alltt}
+% processes text as if by a typewriter (verbatim), BUT still recognizes commands
+
+\usepackage{cprotect}
+
+
+%%%%%%%%%%%%%
+%% HYPERLINKS
+%%%%%%%%%%%%%
+
+\usepackage[
+	bookmarks=true, % shows the bookmarks bar when displaying the document
+	bookmarksnumbered=false, % put section numbers in bookmarks
+	pdftoolbar= true, % shows or hide Acrobat?s toolbar
+	pdfmenubar=true, % shows or hide Acrobat?s menu
+	unicode=true, % allows to use characters of non-Latin based languages in Acrobat?s bookmarks
+	%%%%%%%%%%%%%%%%%
+	colorlinks=true, % surround the links by color frames (false) or colors the text of the links (true)
+	linkcolor=blue, % color of internal links (sections, pages, etc.)
+	citecolor=blue, % color of citation links (bibliography)
+	filecolor=blue, % color of file links
+	urlcolor=blue, % color of URL links (mail, web)
+	anchorcolor=black, % color of anchor text
+	menucolor=black, % color for menu links
+	linktoc=section, % defines which part of an entry in the table of contents is made into a link (none, section, page, all)
+	%%%%%%%%%%%%%%%%%
+	pdffitwindow=false, % resizes document window to fit document size
+	pdfnewwindow=true, % define if a new PDF window should get opened when a link leads out of the current document, the option is ignored if the link leads to an http/https address
+	pdfstartpage={1}, % page at which PDF document opens
+	pagebackref=false, % activate back references inside bibliography, must be specified as part of the \usepackage{} statement, must be set to false to work with biblatex
+	%%%%%%%%%%%%%%%%%
+	pdftitle={\subtitle}, %	defines the title that gets displayed in the "Document Info" window of Acrobat
+	pdfauthor={\author}, % the name of the PDF?s author, works like the one above
+	pdfsubject={\subject}, % subject of the document, it works like the one above
+	pdfcreator={\creator}, % creator of the document, it works like the one above
+	pdfproducer={TeXstudio}, % producer of the document, it works like the one above
+	pdfkeywords={\tags}, % list of keywords, separated by commas, example below
+]{hyperref}
+% provides LaTeX the ability to create hyperlinks within the documen
+
+
+%%%%%%%%%%%%%
+%% APPEARANCE
+%%%%%%%%%%%%%
+
+\usepackage[
+dvipsnames, % defines the use of the colors from the dvips / SVG set
+table, % allows the use of colors in tables
+]{xcolor}
+% provides both foreground and background color management, has to be loaded before pdfpages to avoid option clash
+
+\usepackage{pdfrender}
+
+
+
+%%%%%%%%%%%%
+%% PDF PAGES
+%%%%%%%%%%%%
+
+\usepackage{pdfpages}
+% allows the insertion of pdf pages, has to be loaded after xcolor package to avoid option clash
+
+
+%%%%%%%%%
+%% FLOATS
+%%%%%%%%%
+
+\usepackage{floatrow}
+% loads both rotfloat and float packages, rotfloat loads both rotating and float packages
+% should not be loaded WITH any of the internally loaded packages
+% provides commands to define new floats of various styles and new environments which are rotated by 90 or 270 degrees
+% improves the interface for defining floating objects such as figures and tables
+% pro­vides th H float mod­i­fier op­tion
+% allows to change the font size inside tables
+
+
+%%%%%%%%%
+%% TABLES
+%%%%%%%%%
+
+\usepackage{multirow}
+% provides the command needed for spanning rows
+
+% defines column types for colored tables
+\newcommand*{\arraycolor}[1]{\protect\leavevmode\color{#1}}
+\newcolumntype{A}{>{\columncolor{LimeGreen!50!white}}m{4cm}}
+\newcolumntype{B}{>{\columncolor{LimeGreen!50!white}}m{2cm}}
+\newcolumntype{C}{>{\columncolor{LimeGreen!50!white}}m{0.7cm}}
+\newcolumntype{D}{>{\columncolor{Yellow!50!white}}m{0.5cm}}
+\newcolumntype{E}{>{\columncolor{LimeGreen!50!white}}m{6cm}}
+\newcolumntype{F}{>{\columncolor{Red!50!white}}m{6cm}}
+\newcolumntype{G}{>{\columncolor{LimeGreen!50!white}}m{7cm}}
+\newcolumntype{H}{>{\columncolor{LimeGreen}}m{3cm}}
+
+\floatsetup[table]{capposition=top}
+% for table captions on top
+
+
+%%%%%%%%%%
+%% FIGURES
+%%%%%%%%%%
+
+\usepackage{graphicx}
+% allows the importation of external graphics (pdf, png and jpg)
+
+\graphicspath{{img/}}
+% sets the path to external graphics
+
+\usepackage{epstopdf}
+% converts EPS to PDF
+
+\usepackage{svg}
+% allows the automated integration of SVG graphics into LATEX documents
+
+\usepackage{caption}
+% provides many ways to customise the captions in floating environments
+
+\usepackage{subcaption}
+
+
+%%%%%%%%%%%
+%% LISTINGS
+%%%%%%%%%%%
+
+%\usepackage{minted}
+%\usepackage{inconsolata}
+%\usemintedstyle{monokai}
+%\definecolor{bg}{HTML}{282828}
+%\setminted{xleftmargin=10pt, linenos=true, fontsize=\footnotesize, tabsize=4, bgcolor=bg}
+%\usepackage{tcolorbox}
+%\BeforeBeginEnvironment{minted}{\begin{tcolorbox}[colback=bg, colframe=gray, boxsep=0mm]}%
+%	\AfterEndEnvironment{minted}{\end{tcolorbox}}%
+%
+%% change the size and color of the line numbers
+%\renewcommand\theFancyVerbLine{\color{gray}\arabic{FancyVerbLine}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BIBLIOGRAPHY MANAGEMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[
+backend=biber,
+defernumbers=true,
+style=numeric,
+backref=true
+]{biblatex}
+% processes bibliography information, provides an easy and flexible interface and a good language localization 
+\addbibresource{bibliography.bib}
+% specifies the bibtex data file
+
+\usepackage{csquotes}
+% provides advanced facilities for inline and display quotations
+% ensures that quoted texts are typeset according to the rules of the main language when using babel or polyglossia with biblatex
+
+
+%%%%%%%%%%%%%%
+%% PAGE LAYOUT
+%%%%%%%%%%%%%%
+
+% \usepackage{showframe}
+% renders a frame marking the margins of the document
+
+\usepackage[
+a4paper, % page size (default is letter, USA standard)
+portrait, % page orientation (default is portrait)
+top=2.5cm, 
+bottom=2.5cm, 
+inner=2.3cm, 
+outer=2.3cm % specifies the margins
+]{geometry}
+% allows the customization of document layout
+
+\usepackage{fancyhdr}
+% allows fine customization of headers and footers (construction and usage)s
+	\setlength{\headheight}{\baselineskip} % height of the header
+	\pagestyle{fancy} % page style
+	
+	\lhead[\course]{\course}
+	\chead[]{}
+	\rhead[\rightmark]{\rightmark} % current section name printed like "1.6. THIS IS THE SECTION TITLE"
+	% headers, [<even output>]{<odd output>}
+	
+	\lfoot[\thepage]{}
+	\cfoot[]{}
+	\rfoot[]{\thepage}
+	% footers, [<even output>]{<odd output>}
+
+\usepackage{lastpage}
+% provides with internal link to last page (\pageref{LastPage})
+
+\setcounter{secnumdepth}{5} % determines up to what level the sectioning titles are numbered
+\setcounter{tocdepth}{4} % determines to which level the sectioning commands are printed in the ToC
+
+\setlength{\parindent}{0 cm} % deletes indentation at each new paragraph
+\numberwithin{equation}{section} % section numerotation of equation 
+\numberwithin{figure}{section} 
+\numberwithin{table}{section} 
+%\numberwithin{listing}{section}

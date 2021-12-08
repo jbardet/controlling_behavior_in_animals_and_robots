@@ -1,0 +1,49 @@
+\input{def/preamble}
+\begin{document}
+	%%%%%%%%%%%%%%%
+	%% RENEWCOMMAND
+	%%%%%%%%%%%%%%%
+	\renewcommand\labelitemi{\textbullet}
+	\renewcommand\labelitemii{$\circ$}
+	\renewcommand\labelitemiii{$\star$}
+	% redefines the itemizing symbols for the itemize environment, 
+	% cannot redefine the 4th lvl, 
+	% cannot have more than 4 lvls,
+	% in french, by default, it's all dashes...
+	
+	%%%%%%%%%%%%%
+	%% TITLE PAGE
+	%%%%%%%%%%%%%
+	\input{def/titlepage}
+	
+	%%%%%%%%%%%%%%%%%%%
+	%% TABLE OF CONTENT
+	%%%%%%%%%%%%%%%%%%%
+	\setcounter{page}{1} % beginning of page numeration here
+	\tableofcontents
+	\newpage
+	
+	%%%%%%%%
+	%% INPUT
+	%%%%%%%%
+	\input{00_introduction}
+	\input{01_preprocessing}
+	\input{02_reduction}
+	\input{03_classification}
+	\input{05_discussions}
+	\input{06_conclusion}
+
+	%%%%%%%%%%%%%%%
+	%% BIBLIOGRAPHY
+	%%%%%%%%%%%%%%%
+	\newpage
+	\section*{Bibliography} % to add a section-like unnumbered title
+	\addcontentsline{toc}{section}{Bibliography} % to add said title to the toc
+	\markboth{Bibliography}{Bibliography} % to modify the header
+	\printbibliography[
+	heading=subbibintoc,
+	type=article,
+	title={Articles}
+	]
+
+\end{document}

@@ -1,0 +1,40 @@
+\section{Conclusion}
+
+This project was very interesting.
+The nature of the data and of the assignment itself -- the fact that we were asked to be exploratory in our analysis of the data made it unique in that we had to try and fail at discovering relationships and meanings before we could obtain something from the data.
+
+\vspace{\baselineskip}
+
+Another interesting thing to note was that the predicted behavioral labels provided in the initial dataset were unreliable.
+The main problem was that among the predicted behaviors, there were some that weren't exhibited by the fly, and thus were not appearing on the manually labeled behaviors, because when downsampling, both the predicted and manual labels were taken into account.
+A better labeling of the categorical behavior would not categorize behaviors that the subject does not exhibit (which was the issue with the predicted labeling).
+
+\vspace{\baselineskip}
+
+This leads to other considerations, like how precisely within the experiment are the behaviors categorized.
+Indeed, on Figure~\ref{fig::neural_data_pca1_scatter_classes}, we plot with and without merging the grooming and pushing categories.
+In the experiment design, how is it decided how many categories to choose, and which ones?
+Does the walking get to be further broken down between turning left, turning right and walking straight?
+Should all the groomings be merged?
+Those are valid design choices to wonder about, and the answer is not straightforward, because the best categorization can only be known after the results are understood (which is not a very causal experiment design).
+
+\vspace{\baselineskip}
+
+Thus, a first major improvement of the data labeling process would be to not predict the labels, and to make a unique person label all the dataset, to reduce variation in how the edge behaviors are labeled.
+Further improvement would be to have a second person verifying the labeling.
+
+\vspace{\baselineskip}
+
+On the bright side, the analysis of the neural data, and in particular the logistic regressions brought forward so strong insights on the data that it was sufficient to notice that trial 4 had been (manually) mislabeled.
+This is strong evidence that the results brought by that particular piece of analysis are actually very robust and significant.
+
+\vspace{\baselineskip}
+
+One tool that we did not have to use but was very beneficial for our work was the pose-estimation algorithm \textit{DeepFly3D} with which all joint angles and positions were estimated.
+This algorithm is really speeding up the analysis as no manual labeling of positions and angles needs to be done.  
+
+\vspace{\baselineskip}
+
+With this analysis, even though we found very interesting correlation between neural and behavioral data, we cannot infer causation.
+Indeed, this is an observational study.
+It allows to posit hypotheses on hypothetical links between DNs and high-level fly behavior, but to confirm those hypotheses, experimental studies need to be done, for example with genetic manipulations.
